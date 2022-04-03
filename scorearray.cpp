@@ -33,9 +33,13 @@ int man()
   cout<<"This program reads student's test score and prints it";
 
   //read each student's test scores into an array scores
-  ReadScores(  , numberOfStudents,    );
+  ReadScores(scores[], numberOfStudents,numberOfTests);
 
-  //PrintScores(   ,        ,         );
+  //print each student's scores
+  PrintScores(scores,numberOfStudents,numberOfTests);
+
+  //print average scores
+  PrintAverageScores(scores[],numberOfStudents,numberOfTests,studentAvgs);
 
 
   cout<< "Young Coder, This program is ending now";
