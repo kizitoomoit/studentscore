@@ -38,7 +38,7 @@ int man()
   //PrintScores(   ,        ,         );
 
 
-  cout<< "Jeremiah, This program is ending now";
+  cout<< "Young Coder, This program is ending now";
 
   system("pause");
   return 0;
