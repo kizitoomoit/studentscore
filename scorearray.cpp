@@ -21,7 +21,8 @@ void AvarageScores(const int[][MAX_TESTS],int,int, double[]);
 void AverageTests(const int[][MAX_TESTS],int,int,double[]);
 void PrintStudentsAvgs( double[]);
 void PrintTestAvgs( double[]);
-
+void Initialize(bool[], int);
+void PassMark(bool[], double[], int)
 
 int man()
 {
@@ -30,6 +31,9 @@ int man()
   double scores[MAX_STUDENTS] [MAX_TESTS];   //array of test scores
   int numberOfStudents;     //number of students in a class
   int numberOfTests;        //number of tests written
+  double testAvgs[MAX_TESTS];  // array which stores scores average
+  double studentAvgs[MAX_STUDENTS];        // array which stores students averages
+
   cout<<"This program reads student's test score and prints it";
 
   //read each student's test scores into an array scores
@@ -41,6 +45,11 @@ int man()
   //print average scores
   PrintAverageScores(scores,numberOfStudents,numberOfTests,studentAvgs);
 
+  //print average tests
+  PrintTestAvgs(testAvgs)
+
+  // initializes the passing array to false
+  Initialize(passing, numberOfStudents);
 
   cout<< "Young Coder, This program is ending now";
 
@@ -208,3 +217,26 @@ void PrintTestAvgs(double testAvgs[])
   }
 }
 
+void Initialize(bool passingArray[], int numberOfStudents)
+{
+  for( int student = 0; student < numberOfStudents; student++)
+  {
+    passingArray[student] = false;
+  }
+}
+
+void PassMark( bool passingArray[], double studentAvgs[], int numberOfStudents)
+{
+  for (int student = 0; student < numberOfStudents; student++)
+  {
+    if (studentAvgs[student] >= 55.00)
+    {
+      passingArray[student] = true;
+
+    }
+    else
+    {
+      passingArray[student] = false;
+    }
+  }
+}
