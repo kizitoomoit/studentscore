@@ -19,8 +19,8 @@ void ReadScores(double[] [MAX_TESTS], int& , int&);
 void PrintScores(const double[] [MAX_TESTS], int, int);
 void AvarageScores(const int[][MAX_TESTS],int,int, double[]);
 void AverageTests(const int[][MAX_TESTS],int,int,double[]);
-void PrintAverageScores(const int[] [MAX_TESTS], int, int, double[]);
-void PrintAverageTests(const int[] [MAX_TESTS], int, int, double[]);
+void PrintStudentsAvgs( double[]);
+void PrintTestAvgs( double[]);
 
 
 int man()
@@ -33,13 +33,13 @@ int man()
   cout<<"This program reads student's test score and prints it";
 
   //read each student's test scores into an array scores
-  ReadScores(scores[], numberOfStudents,numberOfTests);
+  ReadScores(scores, numberOfStudents,numberOfTests);
 
   //print each student's scores
   PrintScores(scores,numberOfStudents,numberOfTests);
 
   //print average scores
-  PrintAverageScores(scores[],numberOfStudents,numberOfTests,studentAvgs);
+  PrintAverageScores(scores,numberOfStudents,numberOfTests,studentAvgs);
 
 
   cout<< "Young Coder, This program is ending now";
@@ -131,6 +131,22 @@ void AverageScores(const int scores[][MAX_TESTS],
   double studentAvgs;
   int numberOfStudents;
   int numberOfTests;
+
+  //find the sum of the tests for the student
+  for (int student = 0; student < numberOfStudents; student++)
+  {
+    int sum = 0;
+
+    for (int test = 0; test < numberOfTests; test++)
+    {
+
+      sum = sum+scores[student][test];
+    }
+
+     studentAvgs[student] = (float)sum / numberOfTests;
+
+  }
+
 }
 
 
@@ -152,11 +168,43 @@ void AverageTests(const int scores[][MAX_TESTS],
     int numberOfTests,
     double testAvgs[]);
 {
-  double testAvgs;
-  int numberOfStudents;
-  int numberOfTests;
+
+  //find the sum and divide to find average of the tests
+  for (int test = 0; test < numberOfTests; test++)
+  {
+    int sum = 0;
+
+    for (int student = 0; student < numberOfStudents; student++)
+    {
+      sum = sum + scores[student][test];
+
+    }
+
+    testAvgs[test] = (float) sum / numberOfStudents;
+
+  }
 }
 
 
+void PrintStudentAvgs(double studentAvgs[])
+{
+  cout <<"This is the students average scores respectively" << endl;
 
+  for (int student = 0; student < studentAvgs.length; student++)
+  {
+    cout << studentAvgs[student];
+    cout << endl;
+  }
+}
+
+void PrintTestAvgs(double testAvgs[])
+{
+  cout << "This is the score average: " << endl;
+
+  for (int test = 0; test < testAvgs.length; test++)
+  {
+    cout << testAvgs[test];
+    cout << endl;
+  }
+}
 
